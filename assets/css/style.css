@@ -1,0 +1,27 @@
+body {
+	margin: 40px;
+}
+
+.btn {
+	background-color: lightgreen;
+	margin: 10px;
+	padding: 10px 30px 10px 30px;
+}
+
+#addSearch {
+	background-color: lightgrey;
+	border-radius: 5px;
+	padding: 8px 30px 8px 30px;
+}
+
+#user-input {
+	padding: 5px 30px 5px 30px;
+}
+
+label {
+	font-size: 22px;
+}
+
+.container {
+	margin-top: 10px;
+}
