@@ -2,6 +2,7 @@ $(document).ready(function() {
 
 var topics = ["pandas", "turtles", "cats", "lions"];
 
+//add user buttons
 $("#addSearch").on("click", function(event) {
 	event.preventDefault();
 
@@ -27,17 +28,19 @@ function displayGiphys() {
 
 	var topic = $(this).attr("data-name");
 
-	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topics[x] + "&api_key=8bvrXfOVZnPW3TMYuEFO8jRewu4AXh3U&limit=10&rating=g";
+	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=8bvrXfOVZnPW3TMYuEFO8jRewu4AXh3U&limit=10&rating=g";
 
 	$.ajax({
 		url: queryURL,
 		method: "GET"
 	}).then(function(response) {
 
-		// $("#giphy").append
+		$("#giphy").append("<div>Rating: " + response.rating + "</div>");
+		$("#giphy").append("<img src=" + response.url + ">");
 	});
 };
 
+displayGiphys();
 appendButton();
 
 });
