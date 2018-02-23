@@ -30,14 +30,16 @@ function displayGiphys() {
 
 	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=8bvrXfOVZnPW3TMYuEFO8jRewu4AXh3U&limit=10&rating=g";
 
+	$("#buttons").on("click", function(){
 	$.ajax({
 		url: queryURL,
 		method: "GET"
 	}).then(function(response) {
 
-		$("#giphy").append("<div>Rating: " + response.rating + "</div>");
+		$("#giphy").append("<div> Rating: " + response.rating + "</div>");
 		$("#giphy").append("<img src=" + response.url + ">");
 	});
+});
 };
 
 displayGiphys();
