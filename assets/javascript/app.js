@@ -2,6 +2,9 @@ $(document).ready(function() {
 
 var topics = ["pandas", "turtles", "cats", "lions"];
 
+displayGiphys();
+appendButton();
+
 //add user buttons
 $("#addSearch").on("click", function(event) {
 	event.preventDefault();
@@ -44,14 +47,18 @@ function displayGiphys() {
 		}
 
 		console.log(response.data[0].rating);
-		console.log(response.data[1].images.fixed_height_still.url)
+		console.log(response.data[1].url)
 	});
 });
 };
 
+
+//onclick function is not working
 //onclick function that will change the state of the still giphy
 //when user clicks, the giphy will animate, and when he/she clicks again, the image will go still 
-$(".loadedImages").on("click", function() {
+$(".loadedImages").on("click", function(){
+
+	console.log("this is working");
 	//declares the data-state, which is still by default on loading the page
 	var currentState = $(this).attr("data-state");
 	//alternate states to allow for still and animate 
@@ -62,10 +69,10 @@ $(".loadedImages").on("click", function() {
 		$(this).attr("src", $(this).attr("data-still"));
         $(this).attr("data-state", "still");
 	}
+	
 });
 
-displayGiphys();
-appendButton();
+
 
 });
 
