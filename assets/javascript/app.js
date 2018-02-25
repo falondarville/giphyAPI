@@ -36,11 +36,21 @@ function displayGiphys() {
 		method: "GET"
 	}).then(function(response) {
 
-		$("#giphy").append("<div> Rating: " + response.rating + "</div>");
-		$("#giphy").append("<img src=" + response.url + ">");
+		//loop through all images
+		for (var i = 0; i < topics.length; i ++) {
+			$("#giphy").append("<div> Rating: " + response.data[i].rating + "</div>");
+			$("#giphy").append("<img id=loadedImages src=" + response.data[i].images.fixed_height_still.url + ">");
+		}
+
+
+		console.log(response.data[0].rating);
 	});
 });
 };
+
+//onclick function that will change the state of the still giphy
+//when user clicks again, the image will go still 
+$("#loadedImages").on("click")
 
 displayGiphys();
 appendButton();
