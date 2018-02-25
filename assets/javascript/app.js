@@ -37,12 +37,14 @@ function displayGiphys() {
 	}).then(function(response) {
 
 		//loop through all images
+		//issue- same giphys appear regardless of the category I choose
 		for (var i = 0; i < topics.length; i ++) {
-			$("#giphy").append("<div> Rating: " + response.data[i].rating + "</div>");
-			$("#giphy").append("<img class=loadedImages data-state='still' data-animate=" + response.data[i].url + " src=" + response.data[i].images.fixed_height_still.url + ">");
+			$("#giphy").append(`<div> Rating:${response.data[i].rating}</div>`);
+			$("#giphy").append(`<img class=loadedImages data-state='still' data-animate=${response.data[i].url} data-still=${response.data[i].images.fixed_height_still.url} src=${response.data[i].images.fixed_height_still.url}>`);
 		}
 
 		console.log(response.data[0].rating);
+		console.log(response.data[1].images.fixed_height_still.url)
 	});
 });
 };
@@ -53,23 +55,14 @@ $(".loadedImages").on("click", function() {
 	//declares the data-state, which is still by default on loading the page
 	var currentState = $(this).attr("data-state");
 	//alternate states to allow for still and animate 
-});
-
-
-    $(".gif").on("click", function() {
-      // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
-      var state = $(this).attr("data-state");
-      // If the clicked image's state is still, update its src attribute to what its data-animate value is.
-      // Then, set the image's data-state to animate
-      // Else set src to the data-still value
-      if (state === "still") {
-        $(this).attr("src", $(this).attr("data-animate"));
+	if (currentState === "still") {
+		$(this).attr("src", $(this).attr("data-animate"));
         $(this).attr("data-state", "animate");
-      } else {
-        $(this).attr("src", $(this).attr("data-still"));
+	} else {
+		$(this).attr("src", $(this).attr("data-still"));
         $(this).attr("data-state", "still");
-      }
-    });
+	}
+});
 
 displayGiphys();
 appendButton();
