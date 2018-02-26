@@ -1,27 +1,32 @@
 body {
-	margin: 40px;
+  margin: 40px;
+  background-color: cadetblue;
+}
+
+.jumbotron {
+  height: 200px;
 }
 
 .btn {
-	background-color: lightgreen;
-	margin: 10px;
-	padding: 10px 30px 10px 30px;
+  background-color: lightgreen;
+  margin: 10px;
+  padding: 10px 30px 10px 30px;
 }
 
 #addSearch {
-	background-color: lightgrey;
-	border-radius: 5px;
-	padding: 8px 30px 8px 30px;
+  background-color: lightgrey;
+  border-radius: 5px;
+  padding: 8px 30px 8px 30px;
 }
 
 #user-input {
-	padding: 5px 30px 5px 30px;
+  padding: 5px 30px 5px 30px;
 }
 
 label {
-	font-size: 22px;
+  font-size: 22px;
 }
 
 .container {
-	margin-top: 10px;
+  margin-top: 10px;
 }

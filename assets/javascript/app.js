@@ -1,5 +1,10 @@
 $(document).ready(function() {
-  var topics = ["pandas", "turtles", "cats", "lions"];
+  var topics = [
+    "encouragement",
+    "thumbs up",
+    "nod of approval",
+    "good job champ",
+  ];
 
   appendButton();
 
@@ -47,7 +52,7 @@ $(document).ready(function() {
     }).then(function(response) {
       //loop through images that are retrieved
       for (var i = 0; i < 10; i++) {
-        $("#giphy").append(`<div> Rating:${response.data[i].rating}</div>`);
+        $("#giphy").append(`<br><div> Rating:${response.data[i].rating}</div>`);
         $("#giphy").append(
           `<img class=loadedImages data-state='still' data-animate=${
             response.data[i].images.downsized.url
