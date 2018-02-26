@@ -1,7 +1,6 @@
 $(document).ready(function() {
   var topics = ["pandas", "turtles", "cats", "lions"];
 
-  displayGiphys();
   appendButton();
 
   //add user buttons
@@ -33,7 +32,8 @@ $(document).ready(function() {
   }
 
   //when user clicks on button, they get 10 static images from giphy
-  function displayGiphys() {
+  $("#buttons").on("click", ".btn", function() {
+    $("#giphy").empty();
     var topic = $(this).attr("data-name");
 
     var queryURL =
@@ -41,29 +41,27 @@ $(document).ready(function() {
       topic +
       "&api_key=8bvrXfOVZnPW3TMYuEFO8jRewu4AXh3U&limit=10&rating=g";
 
-    $("#buttons").on("click", function() {
-      $.ajax({
-        url: queryURL,
-        method: "GET",
-      }).then(function(response) {
-        //loop through all images
-        //issue- same gifs appear regardless of the category I choose
-        for (var i = 0; i < topics.length; i++) {
-          $("#giphy").append(`<div> Rating:${response.data[i].rating}</div>`);
-          $("#giphy").append(
-            `<img class=loadedImages data-state='still' data-animate=${
-              response.data[i].url
-            } data-still=${
-              response.data[i].images.fixed_height_still.url
-            } src=${response.data[i].images.fixed_height_still.url}>`
-          );
-        }
-        //for testing
-        console.log(response.data[0].rating);
-        console.log(response.data[1].url);
-      });
+    $.ajax({
+      url: queryURL,
+      method: "GET",
+    }).then(function(response) {
+      //loop through all images
+      //issue- same gifs appear regardless of the category I choose
+      for (var i = 0; i < topics.length; i++) {
+        $("#giphy").append(`<div> Rating:${response.data[i].rating}</div>`);
+        $("#giphy").append(
+          `<img class=loadedImages data-state='still' data-animate=${
+            response.data[i].url
+          } data-still=${response.data[i].images.fixed_height_still.url} src=${
+            response.data[i].images.fixed_height_still.url
+          }>`
+        );
+      }
+      //for testing
+      console.log(response.data[0].rating);
+      console.log(response.data[1].url);
     });
-  }
+  });
 
   //onclick function is not working
   //onclick function that will change the state of the still giphy
