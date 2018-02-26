@@ -45,29 +45,23 @@ $(document).ready(function() {
       url: queryURL,
       method: "GET",
     }).then(function(response) {
-      //loop through all images
-      //issue- same gifs appear regardless of the category I choose
-      for (var i = 0; i < topics.length; i++) {
+      //loop through images that are retrieved
+      for (var i = 0; i < 10; i++) {
         $("#giphy").append(`<div> Rating:${response.data[i].rating}</div>`);
         $("#giphy").append(
           `<img class=loadedImages data-state='still' data-animate=${
-            response.data[i].url
-          } data-still=${response.data[i].images.fixed_height_still.url} src=${
-            response.data[i].images.fixed_height_still.url
+            response.data[i].images.downsized.url
+          } data-still=${response.data[i].images.downsized_still.url} src=${
+            response.data[i].images.downsized_still.url
           }>`
         );
       }
-      //for testing
-      console.log(response.data[0].rating);
-      console.log(response.data[1].url);
     });
   });
 
-  //onclick function is not working
   //onclick function that will change the state of the still giphy
   //when user clicks, the giphy will animate, and when he/she clicks again, the image will go still
-  $(".loadedImages").on("click", function() {
-    console.log("this is working");
+  $("#giphy").on("click", ".loadedImages", function() {
     //declares the data-state, which is still by default on loading the page
     var currentState = $(this).attr("data-state");
     //alternate states to allow for still and animate
