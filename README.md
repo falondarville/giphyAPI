@@ -1,10 +1,10 @@
 Giphy API
 
-![alt-text](images/giphy1.png)
+![alt text](assets/images/giphy1.png)
 
 This application allows the user to click on topic buttons to populate gifs to the page. The user is also able to add his or her own topics, which appear as buttons along with the default ones.
 
-![alt-text](images/giphy2.png)
+![alt text](assets/images/giphy2.png)
 
 Technologies used: HTML/CSS, Bootstrap, JavaScript, JQuery, AJAX through the Giphy API
 
